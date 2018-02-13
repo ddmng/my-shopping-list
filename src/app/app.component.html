@@ -2,11 +2,11 @@
   <a class="navbar-brand" href="#">Lista della spesa</a>
   <div *ngIf="afAuth.authState | async as user">
     <!--h1>Hello {{ user.displayName }}!</h1-->
-    <button class="btn btn-primary" (click)="logout()">Logout</button>
+    <button class="btn btn-primary" (click)="logout()">Esci</button>
   </div>
   <ng-template #showLogin>
-    <div class="jumbotron">
-      <button class="btn btn-success" (click)="login()">Login with Google</button>
+    <div class="jumbotron text-center">
+      <button class="btn btn-success" (click)="login()">Login con Google</button>
     </div>
   </ng-template>
 

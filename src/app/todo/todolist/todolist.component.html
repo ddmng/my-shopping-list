@@ -1,11 +1,12 @@
 <div class="float-right">
   <div class="form-row align-items-center" *ngFor="let item of todoService.fireitems | async">
+    <label>{{item.payload.val().dateAdded | date:"dd MMM"}}</label>
     <div class="col-auto">
       <input type="text" class="form-control mb-2" readonly value="{{ item.payload.val().text }}">
     </div>
     <div class="col-auto">
       <button (click)="remove(item.key)"
-              class="btn btn-primary mb-2"
+              class="btn btn-danger mb-2"
               id="{{item.key}}"><i class="fas fa-times"></i></button>
     </div>
   </div>

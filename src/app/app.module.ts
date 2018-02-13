@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth'
-import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { environment } from '../environments/environment';
@@ -17,8 +16,8 @@ import { TodoadderComponent } from './todo/todoadder/todoadder.component'
 import { TodoService } from './todo/todo.service';
 
 @NgModule({
-  imports:      [ 
-    BrowserModule, 
+  imports:      [
+    BrowserModule,
     FormsModule ,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

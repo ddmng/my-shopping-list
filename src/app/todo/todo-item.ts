@@ -1,4 +1,5 @@
 export class TodoItem {
-  id: string
-  text: string
+  id: string;
+  text: string;
+  dateAdded: number;
 }
