@@ -1,6 +1,12 @@
-  <ul class="checklist-ul">
-    <li *ngFor="let item of todoService.fireitems | async">
-      <button (click)="remove(item.key)" class="btn btn-primary" id="{{item.key}}"><i class="fas fa-times"></i></button>
-      <input type="text" readonly value="{{ item.payload.val().text }}">
-    </li>
-  </ul>
+<div class="float-right">
+  <div class="form-row align-items-center" *ngFor="let item of todoService.fireitems | async">
+    <div class="col-auto">
+      <input type="text" class="form-control mb-2" readonly value="{{ item.payload.val().text }}">
+    </div>
+    <div class="col-auto">
+      <button (click)="remove(item.key)"
+              class="btn btn-primary mb-2"
+              id="{{item.key}}"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+</div>
