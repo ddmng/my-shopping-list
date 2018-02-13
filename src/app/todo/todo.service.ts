@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { TodoItem } from './todo-item'
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireAction, DatabaseSnapshot } from 'angularfire2/database';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class TodoService {
-  itemsList = this.db.list<TodoItem>('items')
+  firebaseCollection = environment.production ? 'items' : 'items-dev';
+  itemsList = this.db.list<TodoItem>(this.firebaseCollection);
   fireitems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
 
   constructor(private db: AngularFireDatabase) {
+
     this.fireitems = db
-      .list<TodoItem>('items')
+      .list<TodoItem>( this.firebaseCollection )
       .snapshotChanges();
   }
 
