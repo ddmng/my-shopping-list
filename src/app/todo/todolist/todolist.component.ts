@@ -15,7 +15,7 @@ export class TodolistComponent implements OnInit {
   }
 
   remove(item) {
-    console.log("requested remove of " + item)
+    // console.log("requested remove of " + item)
     this.todoService.remove(item)
   }
 

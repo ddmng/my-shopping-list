@@ -15,7 +15,7 @@ export class TodoService {
   }
 
   add(item: string) {
-    console.log('service: added ', item)
+    // console.log('service: added ', item)
     this.itemsList.push({ id: item, text: item, dateAdded: Date.now() });
 
     console.dir(this.fireitems);
@@ -23,7 +23,7 @@ export class TodoService {
 
 
   remove(key) {
-    console.log('remove ' + key)
+    // console.log('remove ' + key)
     this.itemsList.remove(key);
   }
 

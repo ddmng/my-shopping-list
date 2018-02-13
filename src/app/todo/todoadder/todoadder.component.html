@@ -2,9 +2,11 @@
   <div class="form-row align-items-center">
     <div class="col-auto">
       <input  type="text"
+              minlength="2"
               required class="form-control mb-2"
               placeholder="Cosa serve?"
-              [(ngModel)]="item" name="item">
+              [(ngModel)]="item"
+              name="item">
     </div>
     <div class="col-auto">
       <button
@@ -13,4 +15,5 @@
         (click)="add()"><i class="fas fa-plus"></i></button>
     </div>
   </div>
+
 </form>
