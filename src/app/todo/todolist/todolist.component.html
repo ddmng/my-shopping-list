@@ -1,4 +1,10 @@
+
+<div class="jumbotron text-center" *ngIf="(todoService.fireitems | async)?.length === 0">
+  <h3>Abbiamo il frigo pieno!!</h3>
+</div>
+
 <div class="float-right">
+
   <div class="form-row align-items-center" *ngFor="let item of todoService.fireitems | async">
     <label>{{item.payload.val().dateAdded | date:"dd MMM"}}</label>
     <div class="col-auto">
