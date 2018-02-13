@@ -8,12 +8,12 @@ import { TodoService } from '../todo.service'
 })
 export class TodolistComponent implements OnInit {
 
-  constructor(private todoService: TodoService) {
+  constructor(public todoService: TodoService) {
   }
 
   ngOnInit() {
   }
-  
+
   remove(item) {
     console.log("requested remove of " + item)
     this.todoService.remove(item)
