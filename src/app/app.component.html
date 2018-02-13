@@ -1,0 +1,14 @@
+<div class="container-fluid">
+	<div *ngIf="afAuth.authState | async as user; else showLogin">
+		<!--h1>Hello {{ user.displayName }}!</h1-->
+		<button class="btn btn-primary" (click)="logout()">Logout</button>
+
+		<todo></todo>
+	</div>
+
+	<ng-template #showLogin>
+		<p>Please login.</p>
+		<button class="btn btn-primary" (click)="login()">Login with Google</button>
+	</ng-template>
+
+</div>
