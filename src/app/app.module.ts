@@ -16,6 +16,13 @@ import { TodolistComponent } from './todo/todolist/todolist.component';
 import { TodoadderComponent } from './todo/todoadder/todoadder.component'
 
 import { TodoService } from './todo/todo.service';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatGridListModule,
+  MatInputModule
+} from '@angular/material';
+
 
 @NgModule({
   imports:      [
@@ -25,9 +32,19 @@ import { TodoService } from './todo/todo.service';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+    MatToolbarModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatInputModule
   ],
   declarations: [ AppComponent, TodoComponent, TodolistComponent, TodoadderComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [ TodoService ]
+  providers: [ TodoService ],
+  exports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatInputModule
+  ]
 })
 export class AppModule { }

@@ -1,19 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Lista della spesa</a>
-  <div *ngIf="afAuth.authState | async as user">
-    <!--h1>Hello {{ user.displayName }}!</h1-->
-    <button class="btn btn-primary" (click)="logout()">Esci</button>
-  </div>
-  <ng-template #showLogin>
-    <div class="jumbotron text-center">
-      <button class="btn btn-success" (click)="login()">Login con Google</button>
-    </div>
-  </ng-template>
+<mat-toolbar color="primary">
+  <span>Lista della spesa</span>
 
-</nav>
+  <span class="fill-space"></span>
 
-<div class="container-fluid">
-  <div *ngIf="afAuth.authState | async as user; else showLogin">
-		<todo></todo>
-  </div>
+  <span *ngIf="afAuth.authState | async as user">
+    <button mat-raised-button color="accent" (click)="logout()">Esci</button>
+  </span>
+</mat-toolbar>
+
+<ng-template #showLogin>
+  <mat-grid-list cols="1" rowHeight="1:1">
+    <mat-grid-tile>
+      <button mat-raised-button (click)="login()">Login con Google</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
+
+
+<div *ngIf="afAuth.authState | async as user; else showLogin">
+  <todo></todo>
 </div>

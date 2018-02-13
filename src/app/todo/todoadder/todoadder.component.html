@@ -1,19 +1,14 @@
 <form>
-  <div class="form-row align-items-center">
-    <div class="col-auto">
-      <input  type="text"
-              minlength="2"
-              required class="form-control mb-2"
-              placeholder="Cosa serve?"
-              [(ngModel)]="item"
-              name="item">
-    </div>
-    <div class="col-auto">
-      <button
-        type="submit"
-        class="btn btn-success mb-2"
-        (click)="add()"><i class="fas fa-plus"></i></button>
-    </div>
-  </div>
-
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Cosa serve?"
+      [(ngModel)]="item"
+      name="item"
+      value="">
+  </mat-form-field>
+  <button
+    type="submit"
+    mat-mini-fab
+    (click)="add()"><i class="fas fa-plus"></i></button>
 </form>
