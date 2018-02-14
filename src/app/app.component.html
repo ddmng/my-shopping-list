@@ -4,19 +4,21 @@
   <span class="fill-space"></span>
 
   <span *ngIf="afAuth.authState | async as user">
-    <button mat-raised-button color="accent" (click)="logout()">Esci</button>
+    <button mat-raised-button color="warn" (click)="logout()">Esci</button>
   </span>
 </mat-toolbar>
 
-<ng-template #showLogin>
-  <mat-grid-list cols="1" rowHeight="1:1">
-    <mat-grid-tile>
-      <button mat-raised-button (click)="login()">Login con Google</button>
-    </mat-grid-tile>
-  </mat-grid-list>
-</ng-template>
+  <ng-template #showLogin>
+    <mat-grid-list cols="1" rowHeight="3:1">
+      <mat-grid-tile>
+        <button mat-raised-button (click)="login()" color="primary">Login con Google</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </ng-template>
 
 
-<div *ngIf="afAuth.authState | async as user; else showLogin">
-  <todo></todo>
+<div class="mat-app-background basic-container">
+  <div *ngIf="afAuth.authState | async as user; else showLogin">
+    <todo></todo>
+  </div>
 </div>

@@ -16,11 +16,13 @@ import { TodolistComponent } from './todo/todolist/todolist.component';
 import { TodoadderComponent } from './todo/todoadder/todoadder.component'
 
 import { TodoService } from './todo/todo.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {
   MatToolbarModule,
   MatButtonModule,
   MatGridListModule,
-  MatInputModule
+  MatInputModule, MatListModule
 } from '@angular/material';
 
 
@@ -35,7 +37,9 @@ import {
     MatToolbarModule,
     MatButtonModule,
     MatGridListModule,
-    MatInputModule
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatListModule
   ],
   declarations: [ AppComponent, TodoComponent, TodolistComponent, TodoadderComponent ],
   bootstrap:    [ AppComponent ],
@@ -44,7 +48,9 @@ import {
     MatToolbarModule,
     MatButtonModule,
     MatGridListModule,
-    MatInputModule
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatListModule
   ]
 })
 export class AppModule { }
