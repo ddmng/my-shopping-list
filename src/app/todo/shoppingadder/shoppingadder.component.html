@@ -1,0 +1,24 @@
+<mat-list>
+  <mat-list-item>
+    <h3>Lista della spesa</h3>
+  </mat-list-item>
+  <mat-list-item>
+    <form>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Cosa serve?"
+          [(ngModel)]="item"
+          name="item"
+          value="">
+      </mat-form-field>
+      <button
+        type="submit"
+        mat-mini-fab
+        color="primary"
+        (click)="add()">
+        <i class="fas fa-plus"></i>
+      </button>
+    </form>
+  </mat-list-item>
+<mat-list>

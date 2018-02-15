@@ -12,8 +12,8 @@ import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { TodoComponent } from './todo/todo.component';
-import { TodolistComponent } from './todo/todolist/todolist.component';
-import { TodoadderComponent } from './todo/todoadder/todoadder.component'
+import { ShoppinglistComponent } from './todo/shoppinglist/shoppinglist.component';
+import { ShoppingadderComponent } from './todo/shoppingadder/shoppingadder.component'
 
 import { TodoService } from './todo/todo.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -22,8 +22,10 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatGridListModule,
-  MatInputModule, MatListModule
+  MatInputModule, MatListModule, MatMenuModule, MatIconModule
 } from '@angular/material';
+import { PizzalistComponent } from './todo/pizzalist/pizzalist.component';
+import { PizzaadderComponent } from './todo/pizzaadder/pizzaadder.component';
 
 
 @NgModule({
@@ -39,9 +41,10 @@ import {
     MatGridListModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ],
-  declarations: [ AppComponent, TodoComponent, TodolistComponent, TodoadderComponent ],
+  declarations: [ AppComponent, TodoComponent, ShoppinglistComponent, ShoppingadderComponent, PizzalistComponent, PizzaadderComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ TodoService ],
   exports: [
@@ -50,7 +53,8 @@ import {
     MatGridListModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ]
 })
 export class AppModule { }

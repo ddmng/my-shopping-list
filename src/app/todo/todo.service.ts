@@ -6,28 +6,36 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class TodoService {
-  firebaseCollection = environment.production ? 'items' : 'items-dev';
-  itemsList = this.db.list<TodoItem>(this.firebaseCollection);
-  fireitems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
+  pizzaCollection = environment.production ? 'pizza' : 'pizza-dev';
+  pizzaList = this.db.list<TodoItem>(this.pizzaCollection);
+  pizzaItems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
+
+  shoppingCollection = environment.production ? 'items' : 'items-dev';
+  shoppingList = this.db.list<TodoItem>(this.shoppingCollection);
+  shoppingItems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
 
   constructor(private db: AngularFireDatabase) {
 
-    this.fireitems = db
-      .list<TodoItem>( this.firebaseCollection )
+    this.shoppingItems = db
+      .list<TodoItem>( this.shoppingCollection )
+      .snapshotChanges();
+    this.pizzaItems = db
+      .list<TodoItem>( this.pizzaCollection )
       .snapshotChanges();
   }
 
-  add(item: string) {
-    // console.log('service: added ', item)
-    this.itemsList.push({ id: item, text: item, dateAdded: Date.now() });
-
-    console.dir(this.fireitems);
+  addShopping(item: string) {
+    this.shoppingList.push({ id: item, text: item, dateAdded: Date.now() });
+  }
+  addPizza(item: string) {
+    this.pizzaList.push({ id: item, text: item, dateAdded: Date.now() });
   }
 
 
-  remove(key) {
-    // console.log('remove ' + key)
-    this.itemsList.remove(key);
+  removeShopping(key) {
+    this.shoppingList.remove(key);
   }
-
+  removePizza(key) {
+    this.pizzaList.remove(key);
+  }
 }
