@@ -11,11 +11,7 @@ import { environment } from '../environments/environment';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { TodoComponent } from './todo/todo.component';
-import { ShoppinglistComponent } from './todo/shoppinglist/shoppinglist.component';
-import { ShoppingadderComponent } from './todo/shoppingadder/shoppingadder.component'
 
-import { TodoService } from './todo/todo.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {
@@ -24,8 +20,22 @@ import {
   MatGridListModule,
   MatInputModule, MatListModule, MatMenuModule, MatIconModule
 } from '@angular/material';
-import { PizzalistComponent } from './todo/pizzalist/pizzalist.component';
-import { PizzaadderComponent } from './todo/pizzaadder/pizzaadder.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { ShoppingComponent } from './shopping/shopping.component';
+import { PizzaComponent} from './pizza/pizza.component';
+import { ShoppinglistComponent } from './shopping/shoppinglist/shoppinglist.component';
+import { PizzaadderComponent } from './pizza/pizzaadder/pizzaadder.component';
+import { PizzalistComponent } from './pizza/pizzalist/pizzalist.component';
+import { ShoppingadderComponent } from './shopping/shoppingadder/shoppingadder.component';
+import { TodoService } from './todo.service';
+import {RouterModule, Routes} from '@angular/router';
+
+const routes: Routes = [
+  { path: 'shopping', component: ShoppingComponent },
+  { path: 'pizza', component: PizzaComponent },
+  { path: '', redirectTo: '/shopping', pathMatch: 'full' },
+];
 
 
 @NgModule({
@@ -36,15 +46,26 @@ import { PizzaadderComponent } from './todo/pizzaadder/pizzaadder.component';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+    RouterModule.forRoot(routes),
     MatToolbarModule,
     MatButtonModule,
     MatGridListModule,
     MatInputModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule,
   ],
-  declarations: [ AppComponent, TodoComponent, ShoppinglistComponent, ShoppingadderComponent, PizzalistComponent, PizzaadderComponent ],
+  declarations: [
+    AppComponent,
+    ShoppingComponent,
+    PizzaComponent,
+    ShoppinglistComponent,
+    ShoppingadderComponent,
+    PizzalistComponent,
+    PizzaadderComponent,
+    ShoppingComponent
+  ],
   bootstrap:    [ AppComponent ],
   providers: [ TodoService ],
   exports: [

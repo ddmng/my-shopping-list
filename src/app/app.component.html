@@ -1,6 +1,17 @@
 <mat-toolbar color="primary">
-  <span><button mat-button><mat-icon><i class="fa fa-shopping-cart"  style="padding-bottom: 2px" aria-hidden="true"></i></mat-icon></button></span>
-  <span><button mat-button><mat-icon><i class="fa fa-truck"  style="padding-bottom: 2px" aria-hidden="true"></i></mat-icon></button></span>
+  <span><button mat-button routerLink="/shopping">
+    <mat-icon>
+      <i class="fa fa-shopping-cart"  style="padding-bottom: 2px" aria-hidden="true"></i>
+    </mat-icon>
+  </button>
+  </span>
+  <span>
+    <button mat-button routerLink="pizza">
+      <mat-icon>
+        <i class="fa fa-utensils"  style="padding-bottom: 2px" aria-hidden="true"></i>
+      </mat-icon>
+    </button>
+  </span>
 
   <span class="fill-space"></span>
   <span *ngIf="afAuth.authState | async as user">
@@ -19,6 +30,6 @@
 
 <div class="mat-app-background basic-container">
   <div *ngIf="afAuth.authState | async as user; else showLogin">
-    <todo></todo>
+    <router-outlet></router-outlet>
   </div>
 </div>

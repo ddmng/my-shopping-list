@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { TodoItem } from './todo-item'
+import { TodoItem } from './models/todo-item';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireAction, DatabaseSnapshot } from 'angularfire2/database';
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class TodoService {

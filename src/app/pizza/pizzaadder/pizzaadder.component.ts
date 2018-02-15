@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TodoService} from '../todo.service';
+import {TodoService} from '../../todo.service';
 
 @Component({
   selector: 'pizzaadder',
@@ -7,7 +7,7 @@ import {TodoService} from '../todo.service';
   styleUrls: ['./pizzaadder.component.css']
 })
 export class PizzaadderComponent implements OnInit {
-
+  item: string;
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
@@ -15,5 +15,7 @@ export class PizzaadderComponent implements OnInit {
 
   add() {
     this.todoService.addPizza(this.item);
+    this.item = '';
+
   }
 }

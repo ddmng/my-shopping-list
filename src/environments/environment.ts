@@ -9,3 +9,16 @@ export const environment = {
     messagingSenderId: '195598084517'
   }
 };
+
+
+// export const environment = {
+//   production: false,
+//   firebase: {
+//     apiKey: 'AIzaSyDnV1T3uTEevVZrFC59CM6UBb1Zl4qUlbU',
+//     authDomain: 'mynotes-2638e.firebaseapp.com',
+//     databaseURL: 'https://mynotes-2638e.firebaseio.com',
+//     projectId: 'mynotes-2638e',
+//     storageBucket: 'mynotes-2638e.appspot.com',
+//     messagingSenderId: '737642064805'
+//   }
+// };

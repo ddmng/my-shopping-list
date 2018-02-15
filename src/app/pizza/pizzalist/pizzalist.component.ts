@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoService } from '../todo.service';
+import { TodoService } from '../../todo.service';
+import {TodoItem} from '../../models/todo-item';
 
 @Component({
   selector: 'pizzalist',
@@ -7,7 +8,7 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./pizzalist.component.css']
 })
 export class PizzalistComponent implements OnInit {
-
+  item: TodoItem
   constructor(public todoService: TodoService) { }
 
   ngOnInit() {
