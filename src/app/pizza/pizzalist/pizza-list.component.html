@@ -2,14 +2,13 @@
   <mat-grid-tile
     colspan="1"
     rowspan="1">
-    <h3>Non si mangia niente??</h3>
+    <h3>Stasera cuciniamo noi??</h3>
   </mat-grid-tile>
 </mat-grid-list>
 
 <mat-list role="list">
   <mat-list-item *ngFor="let item of todoService.pizzaItems | async" role="listitem">
     <h4 mat-line>{{ item.payload.val().text }}</h4>
-    <p mat-line> {{item.payload.val().dateAdded | date:"dd MMM"}} </p>
     <button mat-mini-fab (click)="remove(item.key)"
             class="btn btn-danger mb-2"
             id="{{item.key}}"><i class="fas fa-times"></i></button>

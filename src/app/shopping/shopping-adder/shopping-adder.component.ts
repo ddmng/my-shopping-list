@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../todo.service'
-import {TodoItem} from '../../models/todo-item';
+import {ShoppingItem} from '../../models/shopping-item';
 
 @Component({
-  selector: 'shoppingadder',
-  templateUrl: './shoppingadder.component.html',
-  styleUrls: ['./shoppingadder.component.scss'],
+  selector: 'app-shopping-adder',
+  templateUrl: './shopping-adder.component.html',
+  styleUrls: ['./shopping-adder.component.scss'],
 })
-export class ShoppingadderComponent implements OnInit {
+export class ShoppingAdderComponent implements OnInit {
   item: string;
   constructor(private todoService: TodoService) { }
 
@@ -16,6 +16,6 @@ export class ShoppingadderComponent implements OnInit {
 
   add() {
     this.todoService.addShopping(this.item);
-    this.item = ''
+    this.item = '';
   }
 }

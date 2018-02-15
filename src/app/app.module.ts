@@ -18,16 +18,16 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatGridListModule,
-  MatInputModule, MatListModule, MatMenuModule, MatIconModule
+  MatInputModule, MatListModule, MatMenuModule, MatIconModule, MatSelectModule
 } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ShoppingComponent } from './shopping/shopping.component';
 import { PizzaComponent} from './pizza/pizza.component';
 import { ShoppinglistComponent } from './shopping/shoppinglist/shoppinglist.component';
-import { PizzaadderComponent } from './pizza/pizzaadder/pizzaadder.component';
-import { PizzalistComponent } from './pizza/pizzalist/pizzalist.component';
-import { ShoppingadderComponent } from './shopping/shoppingadder/shoppingadder.component';
+import { PizzaAdderComponent } from './pizza/pizza-adder/pizza-adder.component';
+import { PizzaListComponent } from './pizza/pizzalist/pizza-list.component';
+import { ShoppingAdderComponent } from './shopping/shopping-adder/shopping-adder.component';
 import { TodoService } from './todo.service';
 import {RouterModule, Routes} from '@angular/router';
 
@@ -55,15 +55,16 @@ const routes: Routes = [
     MatListModule,
     MatIconModule,
     AppRoutingModule,
+    MatSelectModule
   ],
   declarations: [
     AppComponent,
     ShoppingComponent,
     PizzaComponent,
     ShoppinglistComponent,
-    ShoppingadderComponent,
-    PizzalistComponent,
-    PizzaadderComponent,
+    ShoppingAdderComponent,
+    PizzaListComponent,
+    PizzaAdderComponent,
     ShoppingComponent
   ],
   bootstrap:    [ AppComponent ],
@@ -75,7 +76,8 @@ const routes: Routes = [
     MatInputModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ]
 })
 export class AppModule { }

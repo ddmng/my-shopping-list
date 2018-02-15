@@ -1,4 +1,4 @@
-export class TodoItem {
+export class PizzaItem {
   id: string;
   text: string;
   dateAdded: number;

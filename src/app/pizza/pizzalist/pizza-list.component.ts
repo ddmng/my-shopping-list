@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../todo.service';
-import {TodoItem} from '../../models/todo-item';
+import {ShoppingItem} from '../../models/shopping-item';
 
 @Component({
-  selector: 'pizzalist',
-  templateUrl: './pizzalist.component.html',
-  styleUrls: ['./pizzalist.component.css']
+  selector: 'app-pizza-list',
+  templateUrl: './pizza-list.component.html',
+  styleUrls: ['./pizza-list.component.css']
 })
-export class PizzalistComponent implements OnInit {
-  item: TodoItem
+export class PizzaListComponent implements OnInit {
   constructor(public todoService: TodoService) { }
 
   ngOnInit() {
