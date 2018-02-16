@@ -13,8 +13,8 @@ export class PizzaListComponent implements OnInit {
   ngOnInit() {
   }
 
-  remove(item) {
-    this.todoService.removePizza(item);
+  remove(key, text) {
+    this.todoService.removePizza(key, text);
   }
 
 }

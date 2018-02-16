@@ -11,22 +11,46 @@ export class TodoService {
   pizzaList = this.db.list<PizzaItem>(this.pizzaCollection);
   pizzaItems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
 
+  pizzaAutocompleteCollection = environment.production ? 'pizza-autocomplete' : 'pizza-autocomplete-dev';
+  pizzaAutocompleteList = this.db.list<PizzaItem>(this.pizzaAutocompleteCollection);
+  pizzaAutocompleteItems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
+
   shoppingCollection = environment.production ? 'items' : 'items-dev';
   shoppingList = this.db.list<ShoppingItem>(this.shoppingCollection);
   shoppingItems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
+
+  shoppingAutocompleteCollection = environment.production ? 'items-autocomplete' : 'items-autocomplete-dev';
+  shoppingAutocompleteList = this.db.list<ShoppingItem>(this.shoppingAutocompleteCollection);
+  shoppingAutocompleteItems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
 
   constructor(private db: AngularFireDatabase) {
 
     this.shoppingItems = db
       .list<ShoppingItem>( this.shoppingCollection )
       .snapshotChanges();
+    this.shoppingAutocompleteItems = db
+      .list<ShoppingItem>( this.shoppingAutocompleteCollection )
+      .snapshotChanges();
+
     this.pizzaItems = db
       .list<PizzaItem>( this.pizzaCollection )
+      .snapshotChanges();
+    this.pizzaAutocompleteItems = db
+      .list<PizzaItem>( this.pizzaAutocompleteCollection )
       .snapshotChanges();
   }
 
   addShopping(item: string) {
-    this.shoppingList.push({ id: item, text: item, dateAdded: Date.now() });
+    this.shoppingList.push({
+      id: item,
+      text: item,
+      dateAdded: Date.now() });
+  }
+  addShoppingAutocomplete(item: string) {
+    this.shoppingAutocompleteList.push({
+      id: item,
+      text: item,
+      dateAdded: Date.now() });
   }
   addPizza(item: string) {
     this.pizzaList.push({
@@ -35,12 +59,21 @@ export class TodoService {
       dateAdded: Date.now()
     });
   }
-
-
-  removeShopping(key) {
-    this.shoppingList.remove(key);
+  addPizzaAutocomplete(item: string) {
+    this.pizzaAutocompleteList.push({
+      id: item,
+      text: item,
+      dateAdded: Date.now()
+    });
   }
-  removePizza(key) {
+
+
+  removeShopping(key, text) {
+    this.shoppingList.remove(key);
+    this.addShoppingAutocomplete(text);
+  }
+  removePizza(key, text) {
     this.pizzaList.remove(key);
+    this.addPizzaAutocomplete(text);
   }
 }

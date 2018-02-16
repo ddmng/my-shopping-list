@@ -9,7 +9,7 @@
 <mat-list role="list">
   <mat-list-item *ngFor="let item of todoService.pizzaItems | async" role="listitem">
     <h4 mat-line>{{ item.payload.val().text }}</h4>
-    <button mat-mini-fab (click)="remove(item.key)"
+    <button mat-mini-fab (click)="remove(item.key, item.payload.val().text)"
             class="btn btn-danger mb-2"
             id="{{item.key}}"><i class="fas fa-times"></i></button>
   </mat-list-item>

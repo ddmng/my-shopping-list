@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../todo.service';
 
 @Component({
-  selector: 'shoppinglist',
+  selector: 'app-shoppinglist',
   templateUrl: './shoppinglist.component.html',
   styleUrls: ['./shoppinglist.component.scss'],
 })
@@ -14,8 +14,8 @@ export class ShoppinglistComponent implements OnInit {
   ngOnInit() {
   }
 
-  remove(item) {
-    this.todoService.removeShopping(item);
+  remove(key, text) {
+    this.todoService.removeShopping(key, text);
   }
 
 }
