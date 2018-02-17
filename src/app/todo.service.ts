@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { ShoppingItem } from './models/shopping-item';
-import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase, AngularFireAction, DatabaseSnapshot } from 'angularfire2/database';
-import { environment } from '../environments/environment';
+import {Injectable} from '@angular/core';
+import {ShoppingItem} from './models/shopping-item';
+import {Observable} from 'rxjs/Observable';
+import {AngularFireDatabase, AngularFireAction, DatabaseSnapshot} from 'angularfire2/database';
+import {environment} from '../environments/environment';
 import {PizzaItem} from './models/pizza-item';
 
 @Injectable()
@@ -23,20 +23,20 @@ export class TodoService {
   shoppingAutocompleteList = this.db.list<ShoppingItem>(this.shoppingAutocompleteCollection);
   shoppingAutocompleteItems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(public db: AngularFireDatabase) {
 
     this.shoppingItems = db
-      .list<ShoppingItem>( this.shoppingCollection )
+      .list<ShoppingItem>(this.shoppingCollection)
       .snapshotChanges();
     this.shoppingAutocompleteItems = db
-      .list<ShoppingItem>( this.shoppingAutocompleteCollection )
+      .list<ShoppingItem>(this.shoppingAutocompleteCollection)
       .snapshotChanges();
 
     this.pizzaItems = db
-      .list<PizzaItem>( this.pizzaCollection )
+      .list<PizzaItem>(this.pizzaCollection)
       .snapshotChanges();
     this.pizzaAutocompleteItems = db
-      .list<PizzaItem>( this.pizzaAutocompleteCollection )
+      .list<PizzaItem>(this.pizzaAutocompleteCollection)
       .snapshotChanges();
   }
 
@@ -44,27 +44,49 @@ export class TodoService {
     this.shoppingList.push({
       id: item,
       text: item,
-      dateAdded: Date.now() });
+      dateAdded: Date.now()
+    });
   }
+
   addShoppingAutocomplete(item: string) {
     this.shoppingAutocompleteList.push({
       id: item,
       text: item,
-      dateAdded: Date.now() });
+      dateAdded: Date.now()
+    });
   }
+
   addPizza(item: string) {
-    this.pizzaList.push({
-      id: item,
-      text: item,
-      dateAdded: Date.now()
-    });
+    if (item) {
+      this.pizzaList.push({
+        id: item,
+        text: item,
+        dateAdded: Date.now()
+      });
+    }
   }
+
   addPizzaAutocomplete(item: string) {
-    this.pizzaAutocompleteList.push({
-      id: item,
-      text: item,
-      dateAdded: Date.now()
-    });
+    const obs = this.db.list<PizzaItem>(this.pizzaAutocompleteCollection,
+      ref => ref
+        .orderByChild('text').equalTo(item))
+      .valueChanges();
+
+    const subs = obs.subscribe(
+      v => {
+        if (v.length === 0) {
+          this.pizzaAutocompleteList.push({
+            id: item,
+            text: item,
+            dateAdded: Date.now()
+          });
+        }
+      }
+    );
+
+    setTimeout(() => {
+      subs.unsubscribe();
+    }, 1000);
   }
 
 
@@ -72,6 +94,7 @@ export class TodoService {
     this.shoppingList.remove(key);
     this.addShoppingAutocomplete(text);
   }
+
   removePizza(key, text) {
     this.pizzaList.remove(key);
     this.addPizzaAutocomplete(text);

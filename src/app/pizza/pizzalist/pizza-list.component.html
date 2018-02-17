@@ -6,15 +6,6 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<!--<mat-form-field>-->
-  <!--<input type="text" matInput [formControl]="myControl">-->
-<!--</mat-form-field>-->
-<!--<mat-autocomplete>-->
-  <!--<mat-option *ngFor="let option of options" [value]="option">-->
-    <!--{{ option }}-->
-  <!--</mat-option>-->
-<!--</mat-autocomplete>-->
-
 <mat-list role="list">
   <mat-list-item *ngFor="let item of todoService.pizzaItems | async" role="listitem">
     <h4 mat-line>{{ item.payload.val().text }}</h4>

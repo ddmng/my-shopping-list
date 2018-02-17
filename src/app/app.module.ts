@@ -18,7 +18,7 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatGridListModule,
-  MatInputModule, MatListModule, MatMenuModule, MatIconModule, MatSelectModule
+  MatInputModule, MatListModule, MatMenuModule, MatIconModule, MatSelectModule, MatAutocompleteModule
 } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -56,7 +56,8 @@ const routes: Routes = [
     MatIconModule,
     AppRoutingModule,
     MatSelectModule,
-    // ReactiveFormsModule
+    ReactiveFormsModule,
+    MatAutocompleteModule
   ],
   declarations: [
     AppComponent,
@@ -66,7 +67,7 @@ const routes: Routes = [
     ShoppingAdderComponent,
     PizzaListComponent,
     PizzaAdderComponent,
-    ShoppingComponent
+    ShoppingComponent,
   ],
   bootstrap:    [ AppComponent ],
   providers: [ TodoService ],
@@ -79,7 +80,7 @@ const routes: Routes = [
     MatListModule,
     MatIconModule,
     MatSelectModule,
-    // ReactiveFormsModule
+    MatAutocompleteModule
   ]
 })
 export class AppModule { }
