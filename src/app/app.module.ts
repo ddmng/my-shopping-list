@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
@@ -55,7 +55,8 @@ const routes: Routes = [
     MatListModule,
     MatIconModule,
     AppRoutingModule,
-    MatSelectModule
+    MatSelectModule,
+    // ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -77,7 +78,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    // ReactiveFormsModule
   ]
 })
 export class AppModule { }
