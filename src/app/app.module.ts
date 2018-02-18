@@ -26,7 +26,7 @@ import { ShoppingComponent } from './shopping/shopping.component';
 import { PizzaComponent} from './pizza/pizza.component';
 import { ShoppinglistComponent } from './shopping/shopping-list/shopping-list.component';
 import { PizzaAdderComponent } from './pizza/pizza-adder/pizza-adder.component';
-import { PizzaListComponent } from './pizza/pizzalist/pizza-list.component';
+import { PizzaListComponent } from './pizza/pizza-list/pizza-list.component';
 import { ShoppingAdderComponent } from './shopping/shopping-adder/shopping-adder.component';
 import { ShoppingService } from './todo.service';
 import {RouterModule, Routes} from '@angular/router';
