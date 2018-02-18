@@ -1,4 +1,4 @@
-<mat-grid-list cols="1" rowHeight="200px" *ngIf="(todoService.shoppingItems | async)?.length === 0">
+<mat-grid-list cols="1" rowHeight="200px" *ngIf="(todoService.items | async)?.length === 0">
   <mat-grid-tile
     colspan="1"
     rowspan="1">
@@ -7,7 +7,7 @@
 </mat-grid-list>
 
 <mat-list role="list">
-  <mat-list-item *ngFor="let item of todoService.shoppingItems | async" role="listitem">
+  <mat-list-item *ngFor="let item of todoService.items | async" role="listitem">
     <h4 mat-line>{{ item.payload.val().text }}</h4>
     <p mat-line> {{item.payload.val().dateAdded | date:"dd MMM"}} </p>
     <button mat-mini-fab (click)="remove(item.key, item.payload.val().text)"

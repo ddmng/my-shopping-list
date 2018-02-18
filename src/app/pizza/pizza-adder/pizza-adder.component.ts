@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {TodoService} from '../../todo.service';
 import {PizzaItem} from '../../models/pizza-item';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
-import {filter, map, startWith} from 'rxjs/operators';
+import {PizzaService} from '../../pizza.service';
 
 @Component({
   selector: 'app-pizza-adder',
@@ -16,13 +14,13 @@ export class PizzaAdderComponent implements OnInit {
   form = new FormControl();
   filteredOptions = [];
 
-  constructor(private todoService: TodoService) {
+  constructor(private service: PizzaService) {
   }
 
   ngOnInit() {
     this.form.valueChanges.subscribe({
       next: v => {
-        const q = this.todoService.db.list<PizzaItem>(this.todoService.pizzaAutocompleteCollection,
+        const q = this.service.db.list<PizzaItem>(this.service.autocColl,
           ref => ref.orderByChild('text')
         ).valueChanges();
         const subs = q.subscribe({
@@ -43,7 +41,7 @@ export class PizzaAdderComponent implements OnInit {
 
 
   add() {
-    this.todoService.addPizza(this.form.value);
+    this.service.add(this.form.value);
     this.form.reset();
   }
 }

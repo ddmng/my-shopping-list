@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoService } from '../../todo.service';
-import {ShoppingItem} from '../../models/shopping-item';
-import {FormControl} from '@angular/forms';
+import {PizzaService} from '../../pizza.service';
 
 @Component({
   selector: 'app-pizza-list',
@@ -9,13 +7,13 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./pizza-list.component.css']
 })
 export class PizzaListComponent implements OnInit {
-  constructor(public todoService: TodoService) { }
+  constructor(public service: PizzaService) { }
 
   ngOnInit() {
   }
 
   remove(key, text) {
-    this.todoService.removePizza(key, text);
+    this.service.remove(key, text);
   }
 
 }

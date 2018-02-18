@@ -24,12 +24,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ShoppingComponent } from './shopping/shopping.component';
 import { PizzaComponent} from './pizza/pizza.component';
-import { ShoppinglistComponent } from './shopping/shoppinglist/shoppinglist.component';
+import { ShoppinglistComponent } from './shopping/shopping-list/shopping-list.component';
 import { PizzaAdderComponent } from './pizza/pizza-adder/pizza-adder.component';
 import { PizzaListComponent } from './pizza/pizzalist/pizza-list.component';
 import { ShoppingAdderComponent } from './shopping/shopping-adder/shopping-adder.component';
-import { TodoService } from './todo.service';
+import { ShoppingService } from './todo.service';
 import {RouterModule, Routes} from '@angular/router';
+import {PizzaService} from './pizza.service';
 
 const routes: Routes = [
   { path: 'shopping', component: ShoppingComponent },
@@ -70,7 +71,7 @@ const routes: Routes = [
     ShoppingComponent,
   ],
   bootstrap:    [ AppComponent ],
-  providers: [ TodoService ],
+  providers: [ ShoppingService, PizzaService ],
   exports: [
     MatToolbarModule,
     MatButtonModule,
