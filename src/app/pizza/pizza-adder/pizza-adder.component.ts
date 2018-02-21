@@ -26,10 +26,9 @@ export class PizzaAdderComponent implements OnInit {
         const subs = q.subscribe({
           next: res => {
             this.filteredOptions = [];
-            const p = res.map(el => el.text).filter(el => el.toLowerCase().startsWith(v.toLowerCase()));
-            p.forEach(el =>
-              this.filteredOptions.push(el)
-            );
+            const p = res.map(el => el.text)
+              .filter(el => el.toLowerCase().startsWith(v.toLowerCase()));
+            p.slice(0, 5).forEach(el => this.filteredOptions.push(el));
           }
         });
         setTimeout(() => {

@@ -35,10 +35,10 @@ export class PizzaService {
     }
   }
 
-  addAutoc(item: string) {
+  addAutoc(key: string, item: string) {
     const obs = this.db.list<PizzaItem>(this.autocColl,
       ref => ref
-        .orderByChild('text').equalTo(item))
+        .orderByChild('text').equalTo(item) )
       .valueChanges();
 
     const subs = obs.subscribe(
@@ -49,9 +49,15 @@ export class PizzaService {
             text: item,
             dateAdded: Date.now()
           });
-        } else {
-          // here update with latest date in order to purge older ones and keep the autocomplete list small
         }
+        // else {
+        //   // here update with latest date in order to purge older ones and keep the autocomplete list small
+        //   console.log('removing ' + this.autocColl + '/' + item);
+        //   const itemRef = this.db.object(item);
+        //   itemRef.remove();
+        //   console.log(itemRef);
+        //
+        // }
       }
     );
 
@@ -63,7 +69,7 @@ export class PizzaService {
 
   remove(key, text) {
     this.list.remove(key);
-    this.addAutoc(text);
+    this.addAutoc(key, text);
   }
 
 }
