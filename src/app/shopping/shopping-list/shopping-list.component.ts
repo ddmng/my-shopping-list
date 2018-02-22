@@ -8,14 +8,14 @@ import { ShoppingService } from '../../todo.service';
 })
 export class ShoppinglistComponent implements OnInit {
 
-  constructor(public todoService: ShoppingService) {
+  constructor(public service: ShoppingService) {
   }
 
   ngOnInit() {
   }
 
   remove(key, text) {
-    this.todoService.remove(key, text);
+    this.service.remove(key, text);
   }
 
 }

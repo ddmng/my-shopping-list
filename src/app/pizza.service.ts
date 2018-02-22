@@ -2,25 +2,25 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireAction, AngularFireDatabase, DatabaseSnapshot} from 'angularfire2/database';
 import {environment} from '../environments/environment';
-import {PizzaItem} from './models/pizza-item';
+import {ShoppingItem} from './models/pizza-item';
 
 @Injectable()
 export class PizzaService {
   coll = environment.production ? 'pizza' : 'pizza-dev';
-  list = this.db.list<PizzaItem>(this.coll);
+  list = this.db.list<ShoppingItem>(this.coll);
   items: Observable<AngularFireAction<DatabaseSnapshot>[]>;
 
   autocColl = environment.production ? 'pizza-autocomplete' : 'pizza-autocomplete-dev';
-  autocList = this.db.list<PizzaItem>(this.autocColl);
+  autocList = this.db.list<ShoppingItem>(this.autocColl);
   autocItems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
 
   constructor(public db: AngularFireDatabase) {
 
     this.items = db
-      .list<PizzaItem>(this.coll)
+      .list<ShoppingItem>(this.coll)
       .snapshotChanges();
     this.autocItems = db
-      .list<PizzaItem>(this.autocColl)
+      .list<ShoppingItem>(this.autocColl)
       .snapshotChanges();
   }
 
@@ -36,7 +36,7 @@ export class PizzaService {
   }
 
   addAutoc(key: string, item: string) {
-    const obs = this.db.list<PizzaItem>(this.autocColl,
+    const obs = this.db.list<ShoppingItem>(this.autocColl,
       ref => ref
         .orderByChild('text').equalTo(item) )
       .valueChanges();

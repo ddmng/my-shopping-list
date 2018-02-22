@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PizzaItem} from '../../models/pizza-item';
+import {ShoppingItem} from '../../models/pizza-item';
 import {FormControl} from '@angular/forms';
 import {PizzaService} from '../../pizza.service';
 
@@ -20,7 +20,7 @@ export class PizzaAdderComponent implements OnInit {
   ngOnInit() {
     this.form.valueChanges.subscribe({
       next: v => {
-        const q = this.service.db.list<PizzaItem>(this.service.autocColl,
+        const q = this.service.db.list<ShoppingItem>(this.service.autocColl,
           ref => ref.orderByChild('text')
         ).valueChanges();
         const subs = q.subscribe({
