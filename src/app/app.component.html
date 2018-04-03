@@ -12,7 +12,7 @@
       </mat-icon>
     </button>
   </span>
-  <span *ngIf="!environment">-->DEV<--</span>
+
   <span class="fill-space"></span>
   <span *ngIf="afAuth.authState | async as user">
     <button mat-raised-button color="warn" (click)="logout()">Esci</button>

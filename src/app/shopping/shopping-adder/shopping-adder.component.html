@@ -8,16 +8,10 @@
         <input
           matInput
           placeholder="Cosa serve?"
-          [formControl]="form"
-          name="text"
-          [matAutocomplete]="auto"
+          [(ngModel)]="item"
+          name="item"
           value="">
       </mat-form-field>
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions" [value]="option">
-          {{ option }}
-        </mat-option>
-      </mat-autocomplete>
       <button
         type="submit"
         mat-mini-fab
