@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth'
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { environment } from '../environments/environment';
@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   MatToolbarModule,
@@ -23,14 +23,21 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 
 import { ShoppingComponent } from './shopping/shopping.component';
-import { PizzaComponent} from './pizza/pizza.component';
+import { PizzaComponent } from './pizza/pizza.component';
 import { ShoppinglistComponent } from './shopping/shopping-list/shopping-list.component';
 import { PizzaAdderComponent } from './pizza/pizza-adder/pizza-adder.component';
 import { PizzaListComponent } from './pizza/pizza-list/pizza-list.component';
 import { ShoppingAdderComponent } from './shopping/shopping-adder/shopping-adder.component';
-import { ShoppingService } from './todo.service';
-import {RouterModule, Routes} from '@angular/router';
-import {PizzaService} from './pizza.service';
+import { RouterModule, Routes } from '@angular/router';
+
+import { ShoppingService } from './shopping/shopping.service';
+import { PizzaService } from './pizza/pizza.service';
+
+import { StoreModule, combineReducers } from '@ngrx/store';
+import * as reducer from './store/app-reducer';
+import { AppEffects } from './store/app-effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {EffectsModule} from '@ngrx/effects';
 
 const routes: Routes = [
   { path: 'shopping', component: ShoppingComponent },
@@ -40,14 +47,23 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports:      [
+  imports: [
     BrowserModule,
-    FormsModule ,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     RouterModule.forRoot(routes),
+    StoreModule.forRoot(reducer),
+    // Instrumentation must be imported after importing StoreModule (config is optional)
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production // Restrict extension to log-only mode
+    }),
+    EffectsModule.forRoot([
+      AppEffects
+    ]),
     MatToolbarModule,
     MatButtonModule,
     MatGridListModule,
@@ -70,8 +86,10 @@ const routes: Routes = [
     PizzaAdderComponent,
     ShoppingComponent,
   ],
-  bootstrap:    [ AppComponent ],
-  providers: [ ShoppingService, PizzaService ],
+  bootstrap: [AppComponent],
+  providers: [
+    ShoppingService,
+    PizzaService],
   exports: [
     MatToolbarModule,
     MatButtonModule,

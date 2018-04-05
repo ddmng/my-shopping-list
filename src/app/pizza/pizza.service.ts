@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireAction, AngularFireDatabase, DatabaseSnapshot} from 'angularfire2/database';
-import {environment} from '../environments/environment';
-import {PizzaItem} from './models/pizza-item';
+import {environment} from '../../environments/environment';
+import {PizzaItem} from '../models/pizza-item';
 
 @Injectable()
 export class PizzaService {

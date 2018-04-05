@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PizzaItem} from '../../models/pizza-item';
 import {FormControl} from '@angular/forms';
-import {PizzaService} from '../../pizza.service';
+import {PizzaService} from '../pizza.service';
 
 @Component({
   selector: 'app-pizza-adder',

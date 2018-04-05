@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {ShoppingItem} from './models/shopping-item';
+import {ShoppingItem} from '../models/shopping-item';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireDatabase, AngularFireAction, DatabaseSnapshot} from 'angularfire2/database';
-import {environment} from '../environments/environment';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ShoppingService {

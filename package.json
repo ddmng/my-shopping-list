@@ -25,8 +25,11 @@
     "@firebase/firestore": "0.3.2",
     "angularfire2": "5.0.0-rc.6",
     "core-js": "2.5.1",
-    "rxjs": "5.5.2",
-    "zone.js": "0.8.18"
+    "rxjs": "5.5.8",
+    "zone.js": "0.8.18",
+    "@ngrx/store": "5.2.0",
+    "@ngrx/store-devtools": "^5.2.0",
+    "@ngrx/effects": "5.2.0"
   },
   "scripts": {
     "ng": "ng",
