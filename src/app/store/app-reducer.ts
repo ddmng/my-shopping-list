@@ -4,19 +4,19 @@ import * as AppActions from './app-actions';
 import { createSelector } from '@ngrx/store';
 
 export interface State {
+    item: string;
     loading: boolean;
     shoppings: ShoppingItem[];
-    pizzas: PizzaItem[];
 }
 
 const initialState: State = {
+    item: '',
     loading: false,
     shoppings: [],
-    pizzas: []
 };
 
 
-export function reducer(state = initialState, action: AppActions.All ): State {
+export function shoppingReducer(state = initialState, action: AppActions.All ): State {
     console.log('Reducer: ', action.type);
 
     switch (action.type) {
@@ -29,7 +29,14 @@ export function reducer(state = initialState, action: AppActions.All ): State {
         case AppActions.AppActionTypes.ADDED_SHOPPING: {
             return {
                 ...state,
-                loading: false
+                loading: false,
+                item: ''
+            };
+        }
+        case AppActions.AppActionTypes.UPDATE_ITEM: {
+            return {
+                ...state,
+                item: action.payload
             };
         }
         case AppActions.AppActionTypes.REMOVE_SHOPPING: {

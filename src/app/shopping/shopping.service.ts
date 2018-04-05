@@ -27,6 +27,7 @@ export class ShoppingService {
   }
 
   add(item: string) {
+    console.log('search service adding', item);
     this.list.push({
       id: item,
       text: item,

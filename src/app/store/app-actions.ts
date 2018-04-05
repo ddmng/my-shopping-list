@@ -9,6 +9,7 @@ export enum AppActionTypes {
     ADDED_SHOPPING = '[Shopping] Added',
     REMOVE_SHOPPING = '[Shopping] Remove',
     REMOVED_SHOPPING = '[Shopping] Removed',
+    UPDATE_ITEM = '[Shopping] Update item',
     ADD_PIZZA = '[Pizza] Add',
     ADDED_PIZZA = '[Pizza] Added',
     REMOVE_PIZZA = '[Pizza] Remove',
@@ -23,8 +24,15 @@ export enum AppActionTypes {
 export class AddShopping implements Action {
     readonly type = AppActionTypes.ADD_SHOPPING;
 
+    constructor() { }
+}
+
+export class UpdateItem implements Action {
+    readonly type = AppActionTypes.UPDATE_ITEM;
+
     constructor(public payload: string) { }
 }
+
 export class AddedShopping implements Action {
     readonly type = AppActionTypes.ADDED_SHOPPING;
 
@@ -71,6 +79,7 @@ export class RemovedPizza implements Action {
 export type All
     = AddShopping
     | AddedShopping
+    | UpdateItem
     | RemoveShopping
     | RemovedShopping
     | AddPizza

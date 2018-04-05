@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingService } from '../shopping.service';
 import * as fromRoot from '../../store/app-reducer';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as AppActions from '../../store/app-actions';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,20 +13,21 @@ import { Observable } from 'rxjs/Observable';
 export class ShoppinglistComponent implements OnInit {
 
   loading: Observable<boolean>;
+  state: Observable<fromRoot.State>;
 
   constructor(
     public todoService: ShoppingService,
     private store: Store<fromRoot.State>
   ) {
-    this.loading = store.select(s => s.loading);
-    this.loading.subscribe( c => console.log('sbloccato', c));
+    this.state = store.pipe(select('shopping'));
+    this.loading = this.state.pipe(select('loading'));
   }
 
   ngOnInit() {
   }
 
   remove(key, text) {
-    this.todoService.remove(key, text);
+    // this.todoService.remove(key, text);
     this.store.dispatch(new AppActions.RemoveShopping( {key, text} ));
   }
 

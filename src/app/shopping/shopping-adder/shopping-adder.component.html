@@ -8,13 +8,14 @@
         <input
           matInput
           placeholder="Cosa serve?"
-          [(ngModel)]="item"
           name="item"
-          value="">
+          [value]="(item|async)"
+          (change)="update($event)">
       </mat-form-field>
       <button
         type="submit"
         mat-mini-fab
+        [disabled]="loading | async"          
         color="primary"
         (click)="add()">
         <i class="fas fa-plus"></i>

@@ -34,7 +34,7 @@ import { ShoppingService } from './shopping/shopping.service';
 import { PizzaService } from './pizza/pizza.service';
 
 import { StoreModule, combineReducers } from '@ngrx/store';
-import * as reducer from './store/app-reducer';
+import { shoppingReducer } from './store/app-reducer';
 import { AppEffects } from './store/app-effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
@@ -55,15 +55,13 @@ const routes: Routes = [
     AngularFireDatabaseModule,
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     RouterModule.forRoot(routes),
-    StoreModule.forRoot(reducer),
+    StoreModule.forRoot({shopping: shoppingReducer}),
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([
-      AppEffects
-    ]),
+    EffectsModule.forRoot([AppEffects]),
     MatToolbarModule,
     MatButtonModule,
     MatGridListModule,

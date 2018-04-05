@@ -10,7 +10,6 @@
 <mat-list-item *ngFor="let item of todoService.items | async" role="listitem">
   <h4 mat-line>{{ item.payload.val().text }}</h4>
   <p mat-line> {{item.payload.val().dateAdded | date:"dd MMM"}} </p>
-  <p mat-line>  Loading: {{(loading | async) }} </p>
   <button mat-mini-fab (click)="remove(item.key, item.payload.val().text)"
           class="btn btn-danger mb-2"
           [disabled]="loading | async"          
