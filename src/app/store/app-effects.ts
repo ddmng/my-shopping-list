@@ -1,7 +1,7 @@
 import { Action, Store, select } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import { switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { switchMap, tap, withLatestFrom, catchError } from 'rxjs/operators';
 import * as AppActions from './app-actions';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -17,11 +17,17 @@ export class AppEffects {
             .pipe(
                 withLatestFrom(this.store.pipe(select('shopping'))),
                 tap(console.log),
-                switchMap( ([action, state]) => {
-                    this.service.add(state.item);
+                switchMap(([action, state]) => {
+                    if (state.item !== '') {
+                        this.service.add(state.item);
+                    }
                     return of(new AppActions.AddedShopping());
                 }),
-        );
+                catchError((err, caugth) => {
+                    console.log('Error adding item', err);
+                    return of(new AppActions.AddedShopping());
+                })
+            );
 
     @Effect()
     removeShopping$: Observable<Action> =
@@ -29,7 +35,9 @@ export class AppEffects {
             .pipe(
                 tap(console.log),
                 switchMap((action, index) => {
-                    this.service.remove(action.payload.key, action.payload.text);
+                    if (action.payload.key !== '') {
+                        this.service.remove(action.payload.key, action.payload.text);
+                    }
                     return of(new AppActions.RemovedShopping());
                 }),
         );

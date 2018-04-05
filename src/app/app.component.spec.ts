@@ -1,14 +1,67 @@
 /* tslint:disable:no-unused-variable */
 
+
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatGridListModule,
+  MatInputModule,
+  MatListModule,
+  MatIconModule,
+  MatSelectModule,
+  MatAutocompleteModule,
+} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
 
 describe('AppComponent', () => {
+  const authState = {
+    displayName: null,
+    isAnonymous: true,
+    uid: '17WvU2Vj58SnTz8v7EqyYYb0WRc2'
+  };
+
+  const mockAngularFireAuth: any = {
+    auth: jasmine.createSpyObj('auth', {
+      'signInAnonymously': Promise.reject({
+        code: 'auth/operation-not-allowed'
+      }),
+      // 'signInWithPopup': Promise.reject(),
+      // 'signOut': Promise.reject()
+    }),
+    authState: Observable.of(authState)
+  };
+
   beforeEach(() => {
+    const routes: Routes = [
+      { path: '', redirectTo: '/shopping', pathMatch: 'full' },
+    ];
+
     TestBed.configureTestingModule({
+      imports: [
+        MatToolbarModule,
+        RouterModule.forRoot(routes),
+        MatButtonModule,
+        MatGridListModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        MatListModule,
+        MatIconModule,
+        MatSelectModule,
+        MatAutocompleteModule,
+      ],
       declarations: [
         AppComponent
       ],
+      providers: [
+        {provide: APP_BASE_HREF, useValue: '/'},
+        { provide: AngularFireAuth, useValue: mockAngularFireAuth },
+      ]
     });
     TestBed.compileComponents();
   });
@@ -19,16 +72,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 
-  it(`should have as title 'app works!'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app works!');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('app works!');
-  }));
 });

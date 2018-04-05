@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-shopping',
   templateUrl: './shopping.component.html',
-  styleUrls: ['./shopping.component.css']
+  styleUrls: ['./shopping.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShoppingComponent implements OnInit {
 

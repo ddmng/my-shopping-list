@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from '@firebase/app';
 import {RouterModule} from '@angular/router';
@@ -8,6 +8,7 @@ import {RouterModule} from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   constructor(public afAuth: AngularFireAuth) {
