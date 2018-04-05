@@ -27,7 +27,6 @@ export class ShoppinglistComponent implements OnInit {
   }
 
   remove(key, text) {
-    // this.todoService.remove(key, text);
     this.store.dispatch(new AppActions.RemoveShopping( {key, text} ));
   }
 
