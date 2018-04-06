@@ -1,6 +1,6 @@
 import { ShoppingItem } from '../models/shopping-item';
 import { PizzaItem } from '../models/pizza-item';
-import * as AppActions from './app-actions';
+import * as AppActions from './shopping-actions';
 import { createSelector } from '@ngrx/store';
 
 export interface State {
@@ -17,7 +17,7 @@ const initialState: State = {
 
 
 export function shoppingReducer(state = initialState, action: AppActions.All ): State {
-    console.log('Reducer: ', action.type);
+    console.log('Shopping Reducer: ', action.type);
 
     switch (action.type) {
         case AppActions.AppActionTypes.ADD_SHOPPING: {

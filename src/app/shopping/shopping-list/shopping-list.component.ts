@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingService } from '../shopping.service';
-import * as fromRoot from '../../store/app-reducer';
+import * as fromRoot from '../../store/shopping-reducer';
 import { Store, select } from '@ngrx/store';
-import * as AppActions from '../../store/app-actions';
+import * as AppActions from '../../store/shopping-actions';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

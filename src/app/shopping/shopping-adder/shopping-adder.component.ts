@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingService } from '../shopping.service';
 import {ShoppingItem} from '../../models/shopping-item';
-import * as fromRoot from '../../store/app-reducer';
+import * as fromShopping from '../../store/shopping-reducer';
 import { Store, select } from '@ngrx/store';
-import * as AppActions from '../../store/app-actions';
+import * as AppActions from '../../store/shopping-actions';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -14,11 +14,11 @@ import { Observable } from 'rxjs/Observable';
 export class ShoppingAdderComponent implements OnInit {
   item: Observable<string>;
   loading: Observable<boolean>;
-  state: Observable<fromRoot.State>;
+  state: Observable<fromShopping.State>;
 
   constructor(
     private todoService: ShoppingService,
-    private store: Store<fromRoot.State>
+    private store: Store<fromShopping.State>
   ) {
     this.state = store.pipe(select('shopping'));
     this.loading = this.state.pipe(select('loading'));

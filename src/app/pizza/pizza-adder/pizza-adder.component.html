@@ -8,10 +8,10 @@
         <input
           matInput
           placeholder="Cosa mangiamo?"
-          [formControl]="form"
           name="text"
+          [value]="item | async"
           [matAutocomplete]="auto"
-          value="">
+          (change)="update($event)">
       </mat-form-field>
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions" [value]="option">

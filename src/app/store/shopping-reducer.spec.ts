@@ -1,6 +1,6 @@
-import * as reducer from './app-reducer';
+import * as reducer from './shopping-reducer';
 import { State } from '@ngrx/store';
-import { All, AddShopping, AddedShopping, RemoveShopping, RemovedShopping } from './app-actions';
+import { All, AddShopping, AddedShopping, RemoveShopping, RemovedShopping } from './shopping-actions';
 
 describe('Shopping reducer', () => {
     const state1: reducer.State = {
