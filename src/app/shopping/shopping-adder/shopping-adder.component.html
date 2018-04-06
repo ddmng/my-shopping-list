@@ -9,7 +9,7 @@
           matInput
           placeholder="Cosa serve?"
           name="item"
-          [value]="(item|async)"
+          [value]="item | async"
           (change)="update($event)">
       </mat-form-field>
       <button

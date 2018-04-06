@@ -4,9 +4,9 @@ import * as AppActions from './app-actions';
 import { createSelector } from '@ngrx/store';
 
 export interface State {
-    item: string;
-    loading: boolean;
-    shoppings: ShoppingItem[];
+    readonly item: string;
+    readonly loading: boolean;
+    readonly shoppings: ShoppingItem[];
 }
 
 const initialState: State = {

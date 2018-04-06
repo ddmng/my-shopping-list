@@ -21,6 +21,7 @@ export class AppEffects {
                     if (state.item !== '') {
                         this.service.add(state.item);
                     }
+                    console.log('Dispatching AddedShopping');
                     return of(new AppActions.AddedShopping());
                 }),
                 catchError((err, caugth) => {
