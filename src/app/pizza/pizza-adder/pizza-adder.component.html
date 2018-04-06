@@ -10,14 +10,14 @@
           placeholder="Cosa mangiamo?"
           name="text"
           [value]="item | async"
-          [matAutocomplete]="auto"
           (change)="update($event)">
       </mat-form-field>
-      <mat-autocomplete #auto="matAutocomplete">
+      <!-- <mat-autocomplete #auto="matAutocomplete">
+          [matAutocomplete]="auto"
         <mat-option *ngFor="let option of filteredOptions" [value]="option">
           {{ option }}
         </mat-option>
-      </mat-autocomplete>
+      </mat-autocomplete> -->
       <button
         type="submit"
         mat-mini-fab
