@@ -28,9 +28,17 @@ export class ShoppinglistComponent implements OnInit {
     this.items = this.state.pipe(select('shoppings'));
 
     service.items.subscribe(
-      v => {
-        console.log('dispatching SyncShopping for ', v);
-        return store.dispatch(new AppActions.SyncShopping(v));
+      value => {
+        console.log('dispatching SyncShopping for ', value);
+        return store.dispatch(new AppActions.SyncShopping(value.map(v => {
+          return {
+            key: v.key,
+            id: v.payload.val().id,
+            text: v.payload.val().text,
+            dateAdded: v.payload.val().dateAdded,
+            user: v.payload.val().user
+          };
+        })));
       }
     );
   }

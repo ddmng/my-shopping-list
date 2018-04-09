@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { AngularFireAction } from 'angularfire2/database';
 import { DataSnapshot } from '@firebase/database-types';
+import { ShoppingItem } from '../models/shopping-item';
 
 /**
  * For each action type in an action group, make a simple
@@ -52,7 +53,7 @@ export class RemovedShopping implements Action {
 export class SyncShopping implements Action {
     readonly type = AppActionTypes.SYNC_SHOPPING;
 
-    constructor(public payload: AngularFireAction<DataSnapshot>[]) { }
+    constructor(public payload: ShoppingItem[]) { }
 }
 
 /**

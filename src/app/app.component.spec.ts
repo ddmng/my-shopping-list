@@ -18,6 +18,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
+import { shoppingReducer } from './store/shopping-reducer';
+import { pizzaReducer } from './store/pizza-reducer';
+import { userReducer } from './store/user-reducer';
+import { StoreModule } from '@ngrx/store';
 
 describe('AppComponent', () => {
   const authState = {
@@ -54,7 +58,12 @@ describe('AppComponent', () => {
         MatIconModule,
         MatSelectModule,
         MatAutocompleteModule,
-      ],
+        StoreModule.forRoot({
+          shopping: shoppingReducer,
+          pizza: pizzaReducer,
+          user: userReducer
+        }),
+          ],
       declarations: [
         AppComponent
       ],
