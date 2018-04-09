@@ -20,7 +20,7 @@ export enum AppActionTypes {
 export class AddShopping implements Action {
     readonly type = AppActionTypes.ADD_SHOPPING;
 
-    constructor() { }
+    constructor(public user: string) { }
 }
 
 export class UpdateItem implements Action {

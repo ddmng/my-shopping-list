@@ -36,6 +36,7 @@ import { PizzaService } from './pizza/pizza.service';
 import { StoreModule, combineReducers } from '@ngrx/store';
 import { shoppingReducer } from './store/shopping-reducer';
 import { pizzaReducer } from './store/pizza-reducer';
+import { userReducer } from './store/user-reducer';
 import { ShoppingEffects } from './store/shopping-effects';
 import { PizzaEffects } from './store/pizza-effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -61,7 +62,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes,  {useHash: true}),
     StoreModule.forRoot({
       shopping: shoppingReducer,
-      pizza: pizzaReducer
+      pizza: pizzaReducer,
+      user: userReducer
     }),
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
@@ -89,7 +91,6 @@ const routes: Routes = [
     ShoppingAdderComponent,
     PizzaListComponent,
     PizzaAdderComponent,
-    ShoppingComponent,
     PageNotFoundComponent
   ],
   bootstrap: [AppComponent],

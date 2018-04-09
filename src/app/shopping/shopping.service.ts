@@ -26,12 +26,13 @@ export class ShoppingService {
 
   }
 
-  add(item: string) {
-    console.log('search service adding', item);
+  add(item: string, user: string) {
+    console.log('search service adding', item, user);
     this.list.push({
       id: item,
       text: item,
-      dateAdded: Date.now()
+      dateAdded: Date.now(),
+      user: user
     });
   }
 

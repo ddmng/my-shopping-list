@@ -19,7 +19,7 @@ export class ShoppingEffects {
                 tap(console.log),
                 switchMap(([action, state]) => {
                     if (state.item !== '') {
-                        this.service.add(state.item);
+                        this.service.add(state.item, action.user);
                     }
                     console.log('Dispatching AddedShopping');
                     return of(new AppActions.AddedShopping());
