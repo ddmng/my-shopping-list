@@ -1,26 +1,23 @@
 {
   "index": "/index.html",
+  "appData": {
+    "test": true
+  },
   "assetGroups": [{
-    "name": "app",
-    "installMode": "prefetch",
+    "name": "appshell",
     "resources": {
       "files": [
-        "/favicon.ico",
-        "/index.html"
+        "/assets/**/*",
+        "!/ngsw-worker.js"
       ],
       "versionedFiles": [
-        "/*.bundle.css",
-        "/*.bundle.js",
-        "/*.chunk.js"
-      ]
-    }
-  }, {
-    "name": "assets",
-    "installMode": "lazy",
-    "updateMode": "prefetch",
-    "resources": {
-      "files": [
-        "/assets/**"
+        "/**/*.html",
+        "/**/*.js",
+        "/**/*.css"
+      ],
+      "urls": [
+        "https://fonts.googleapis.com/css?family=Material+Icons",
+        "https://fonts.gstatic.com/s/materialicons/v29/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2"
       ]
     }
   }]

@@ -17,5 +17,9 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
   }
   window['ngRef'] = ref;
 
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/ngsw-worker.js') ;
+  }
+
   // Otherise, log the boot error
 }).catch(err => console.error(err));

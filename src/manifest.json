@@ -1,8 +1,9 @@
 {
-  "short_name": "SHLIST",
+  "short_name": "shoppinglist",
   "name": "Shopping list",
-  "start_url": "/shopping",
-  "theme_color": "#f48c5b",
+  "description": "My Angular shopping list PWA",  
+  "start_url": "index.html",
+  "theme_color": "#673ab7",
   "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait",
