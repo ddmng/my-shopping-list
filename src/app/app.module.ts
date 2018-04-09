@@ -58,7 +58,7 @@ const routes: Routes = [
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,  {useHash: true}),
     StoreModule.forRoot({
       shopping: shoppingReducer,
       pizza: pizzaReducer
