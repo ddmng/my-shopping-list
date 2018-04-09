@@ -16,7 +16,7 @@ const initialState: State = {
 };
 
 
-export function shoppingReducer(state = initialState, action: AppActions.All ): State {
+export function shoppingReducer(state = initialState, action: AppActions.All): State {
     console.log('Shopping Reducer: ', action.type);
 
     switch (action.type) {
@@ -49,6 +49,20 @@ export function shoppingReducer(state = initialState, action: AppActions.All ): 
             return {
                 ...state,
                 loading: false
+            };
+        }
+        case AppActions.AppActionTypes.SYNC_SHOPPING: {
+            return {
+                ...state,
+                shoppings: action.payload.map(v => {
+                    return {
+                        key: v.key,
+                        id: v.payload.val().id,
+                        text: v.payload.val().text,
+                        dateAdded: v.payload.val().dateAdded,
+                        user: v.payload.val().user
+                    };
+                })
             };
         }
         default: {

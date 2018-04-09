@@ -16,14 +16,8 @@ export class ShoppingService {
   autocItems: Observable<AngularFireAction<DatabaseSnapshot>[]>;
 
   constructor(public db: AngularFireDatabase) {
-
-    this.items = db
-      .list<ShoppingItem>(this.coll)
-      .snapshotChanges();
-    this.autocItems = db
-      .list<ShoppingItem>(this.autocColl)
-      .snapshotChanges();
-
+    this.items = this.list.snapshotChanges();
+    this.autocItems = this.autocList.snapshotChanges();
   }
 
   add(item: string, user: string) {

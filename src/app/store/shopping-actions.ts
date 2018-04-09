@@ -1,4 +1,6 @@
 import { Action } from '@ngrx/store';
+import { AngularFireAction } from 'angularfire2/database';
+import { DataSnapshot } from '@firebase/database-types';
 
 /**
  * For each action type in an action group, make a simple
@@ -10,6 +12,7 @@ export enum AppActionTypes {
     REMOVE_SHOPPING = '[Shopping] Remove',
     REMOVED_SHOPPING = '[Shopping] Removed',
     UPDATE_ITEM = '[Shopping] Update item',
+    SYNC_SHOPPING = '[Shopping] Sync shopping'
 }
 
 /**
@@ -46,6 +49,11 @@ export class RemovedShopping implements Action {
     constructor() { }
 }
 
+export class SyncShopping implements Action {
+    readonly type = AppActionTypes.SYNC_SHOPPING;
+
+    constructor(public payload: AngularFireAction<DataSnapshot>[]) { }
+}
 
 /**
  * Export a type alias of all actions in this action group
@@ -56,4 +64,5 @@ export type All
     | AddedShopping
     | UpdateItem
     | RemoveShopping
-    | RemovedShopping;
+    | RemovedShopping
+    | SyncShopping;
