@@ -1,5 +1,5 @@
 {
-  "short_name": "Lista della spesa",
+  "short_name": "La mia spesa",
   "name": "Lista della spesa",
   "description": "My Angular shopping list PWA",  
   "start_url": "index.html",
