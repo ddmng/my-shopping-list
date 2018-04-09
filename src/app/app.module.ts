@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -42,6 +42,8 @@ import { PizzaEffects } from './store/pizza-effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import { PageNotFoundComponent } from './not-found.component';
+import localeIt from '@angular/common/locales/it';
+import { registerLocaleData } from '@angular/common';
 
 const routes: Routes = [
   { path: 'shopping', component: ShoppingComponent },
@@ -50,6 +52,7 @@ const routes: Routes = [
   { path: '**', component: PageNotFoundComponent }
 ];
 
+registerLocaleData(localeIt, 'it');
 
 @NgModule({
   imports: [
@@ -96,7 +99,9 @@ const routes: Routes = [
   bootstrap: [AppComponent],
   providers: [
     ShoppingService,
-    PizzaService],
+    PizzaService,
+    { provide: LOCALE_ID, useValue: 'it' },
+  ],
   exports: [
     MatToolbarModule,
     MatButtonModule,
