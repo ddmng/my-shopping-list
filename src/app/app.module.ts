@@ -100,7 +100,7 @@ registerLocaleData(localeIt, 'it');
   providers: [
     ShoppingService,
     PizzaService,
-    { provide: LOCALE_ID, useValue: 'it' },
+    { provide: LOCALE_ID, useValue: (navigator.language || 'it') },
   ],
   exports: [
     MatToolbarModule,
