@@ -1,0 +1,62 @@
+/* Add application styles & imports to this file! */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+$outer-spinner-size:  40px;
+$inner-spinner-size:  30px;
+$center-spinner-size: 20px;
+$border-width:        3px;
+$core-spinner-color:  #5A7E96;
+
+@mixin make-spinner($size, $border-opacity) {
+	width: $size;
+	height: $size;
+	border-radius: $size * 2;
+	border: $border-width solid transparent;
+	border-left-color: rgba($core-spinner-color, $border-opacity);
+	border-right-color: rgba($core-spinner-color, $border-opacity);  
+}
+
+@mixin offset-inner($inner-size) {
+	$offset: ((($outer-spinner-size - $inner-size) / 2) - $border-width);
+	top: $offset;
+	left: $offset;
+}
+
+body {
+	background-color: lighten($core-spinner-color, 40%);
+}
+
+.spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -(($outer-spinner-size + $border-width) / 2);
+	margin-top: -(($outer-spinner-size + $border-width) / 2);
+	@include make-spinner($outer-spinner-size, 0.2);
+	animation: spinnit 1s linear infinite;
+}
+
+.spinner:after {
+	content: "";
+	position: absolute;
+	@include offset-inner($inner-spinner-size);
+	@include make-spinner($inner-spinner-size, 0.5);
+	animation: spinnit 0.5s linear infinite reverse;
+}
+
+.spinner:before {
+	content: "";
+	position: absolute;
+	@include offset-inner($center-spinner-size);
+	@include make-spinner($center-spinner-size, 0.8);
+}
+
+@keyframes spinnit {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}

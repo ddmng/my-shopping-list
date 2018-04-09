@@ -40,11 +40,13 @@ import { ShoppingEffects } from './store/shopping-effects';
 import { PizzaEffects } from './store/pizza-effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
+import { PageNotFoundComponent } from './not-found.component';
 
 const routes: Routes = [
   { path: 'shopping', component: ShoppingComponent },
   { path: 'pizza', component: PizzaComponent },
-  { path: '', redirectTo: '/shopping', pathMatch: 'full' },
+  { path: '', redirectTo: 'shopping', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 
@@ -77,7 +79,8 @@ const routes: Routes = [
     AppRoutingModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : []
   ],
   declarations: [
     AppComponent,
@@ -88,6 +91,7 @@ const routes: Routes = [
     PizzaListComponent,
     PizzaAdderComponent,
     ShoppingComponent,
+    PageNotFoundComponent
   ],
   bootstrap: [AppComponent],
   providers: [

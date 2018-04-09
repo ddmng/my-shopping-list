@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>My shopping list</title>
@@ -9,10 +10,23 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script src="//use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-  <link rel="manifest" href="/ngsw-manifest.json">
+  <meta name="theme-color" content="#673ab7">
+  <link rel="manifest" href="manifest.json">
 
 </head>
+
 <body>
-    <app-root></app-root>
+  <noscript>
+    <h3 style="color: #673ab7; font-family: Helvetica; margin: 2rem;">
+      Sorry, but app is not available without javascript
+    </h3>
+  </noscript>
+
+  <app-root>
+    <nav style="background-color: #3f51b5; height: 56px; width: 100%">
+    </nav>
+    <div class="spinner"></div>
+  </app-root>
 </body>
+
 </html>

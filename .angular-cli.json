@@ -20,7 +20,8 @@
       "prefix": "app",
       "serviceWorker": true,
       "styles": [
-        "styles.css"
+        "styles.scss",
+        "manifest.json"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
