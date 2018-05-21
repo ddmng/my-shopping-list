@@ -30,7 +30,7 @@ export class ShoppingAdderComponent implements OnInit {
     this.userState = this.store.pipe(select('user'));
 
     this.userState.subscribe( v => {
-      console.log(v);
+      console.debug(v);
     });
   }
 

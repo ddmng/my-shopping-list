@@ -27,7 +27,7 @@ export class ShoppingService {
   }
 
   add(item: string, user: string) {
-    console.log('search service adding', item, user);
+    console.debug('search service adding', item, user);
     this.list.push({
       id: item,
       text: item,

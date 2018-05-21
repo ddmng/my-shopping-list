@@ -17,7 +17,7 @@ const initialState: State = {
 
 
 export function pizzaReducer(state = initialState, action: AppActions.All ): State {
-    console.log('Pizza Reducer: ', action.type);
+    console.debug('Pizza Reducer: ', action.type);
 
     switch (action.type) {
         case AppActions.AppActionTypes.ADD_PIZZA: {

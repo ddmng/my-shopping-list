@@ -17,7 +17,7 @@ const initialState: State = {
 
 
 export function shoppingReducer(state = initialState, action: AppActions.All ): State {
-    console.log('Shopping Reducer: ', action.type);
+    console.debug('Shopping Reducer: ', action.type);
 
     switch (action.type) {
         case AppActions.AppActionTypes.ADD_SHOPPING: {

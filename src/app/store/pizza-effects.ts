@@ -16,16 +16,16 @@ export class PizzaEffects {
         this.actions$.ofType(AppActions.AppActionTypes.ADD_PIZZA)
             .pipe(
                 withLatestFrom(this.store.pipe(select('pizza'))),
-                tap(console.log),
+                tap(console.debug),
                 switchMap(([action, state]) => {
                     if (state.item !== '') {
                         this.service.add(state.item);
                     }
-                    console.log('Dispatching AddedPizza');
+                    console.debug('Dispatching AddedPizza');
                     return of(new AppActions.AddedPizza());
                 }),
                 catchError((err, caugth) => {
-                    console.log('Error adding item', err);
+                    console.debug('Error adding item', err);
                     return of(new AppActions.AddedPizza());
                 })
             );
@@ -34,7 +34,7 @@ export class PizzaEffects {
     removePizza$: Observable<Action> =
         this.actions$.ofType(AppActions.AppActionTypes.REMOVE_PIZZA)
             .pipe(
-                tap(console.log),
+                tap(console.debug),
                 switchMap((action, index) => {
                     if (action.payload.key !== '') {
                         this.service.remove(action.payload.key, action.payload.text);
