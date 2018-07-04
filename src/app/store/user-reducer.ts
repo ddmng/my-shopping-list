@@ -12,7 +12,7 @@ const initialState: State = {
 };
 
 export function userReducer(state = initialState, action: AppActions.All ): State {
-    console.log('User Reducer: ', action.type);
+    console.debug('User Reducer: ', action.type);
 
     switch (action.type) {
         case AppActions.AppActionTypes.UPDATE_USER: {

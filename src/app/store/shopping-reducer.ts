@@ -16,9 +16,7 @@ const initialState: State = {
 };
 
 
-export function shoppingReducer(state = initialState, action: AppActions.All): State {
-    console.log('Shopping Reducer: ', action.type);
-
+export function shoppingReducer(state = initialState, action: AppActions.All ): State {
     switch (action.type) {
         case AppActions.AppActionTypes.ADD_SHOPPING: {
             return {
@@ -37,12 +35,6 @@ export function shoppingReducer(state = initialState, action: AppActions.All): S
             return {
                 ...state,
                 item: action.payload
-            };
-        }
-        case AppActions.AppActionTypes.REMOVE_SHOPPING: {
-            return {
-                ...state,
-                loading: true
             };
         }
         case AppActions.AppActionTypes.REMOVED_SHOPPING: {

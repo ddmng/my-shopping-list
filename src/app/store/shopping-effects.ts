@@ -16,16 +16,16 @@ export class ShoppingEffects {
         this.actions$.ofType(AppActions.AppActionTypes.ADD_SHOPPING)
             .pipe(
                 withLatestFrom(this.store.pipe(select('shopping'))),
-                tap(console.log),
+                tap(console.debug),
                 switchMap(([action, state]) => {
                     if (state.item !== '') {
                         this.service.add(state.item, action.user);
                     }
-                    console.log('Dispatching AddedShopping');
+                    console.debug('Dispatching AddedShopping');
                     return of(new AppActions.AddedShopping());
                 }),
                 catchError((err, caugth) => {
-                    console.log('Error adding item', err);
+                    console.debug('Error adding item', err);
                     return of(new AppActions.AddedShopping());
                 })
             );
@@ -34,7 +34,7 @@ export class ShoppingEffects {
     removeShopping$: Observable<Action> =
         this.actions$.ofType(AppActions.AppActionTypes.REMOVE_SHOPPING)
             .pipe(
-                tap(console.log),
+                tap(console.debug),
                 switchMap((action, index) => {
                     if (action.payload.key !== '') {
                         this.service.remove(action.payload.key, action.payload.text);
