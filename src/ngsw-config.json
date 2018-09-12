@@ -8,7 +8,6 @@
     "resources": {
       "files": [
         "/assets/**/*",
-        "!/ngsw-worker.js",
         "/**/*.html",
         "/**/*.js",
         "/**/*.css"
