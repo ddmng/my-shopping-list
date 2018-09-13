@@ -1,3 +1,4 @@
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
@@ -60,6 +61,7 @@ registerLocaleData(localeIt, 'it');
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     RouterModule.forRoot(routes,  {useHash: true}),
