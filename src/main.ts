@@ -20,7 +20,7 @@ platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/ngsw-worker.js')
     .then( () => console.log('Service Worker Registered'))
-    .catch( () => alert('Unable to register Service Worker'));
+    .catch( (e) => console.error('Unable to register Service Worker', e));
   }
 
   // Otherise, log the boot error

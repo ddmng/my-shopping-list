@@ -28,6 +28,7 @@
     "@ngrx/store-devtools": "^5.2.0",
     "angularfire2": "5.0.0-rc.6",
     "core-js": "2.5.1",
+    "firebase": "^5.7.0",
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",
     "zone.js": "^0.8.26"
